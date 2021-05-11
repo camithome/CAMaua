@@ -10,7 +10,7 @@ class ProductsPage extends StatefulWidget {
   ProductsPageState createState() => ProductsPageState();
 }
 
-class ProductsPageState extends State<ProductsPage> {
+class ProductsPageState extends ModularState<ProductsPage, ProductsStore> {
   final ProductsStore store = Modular.get();
 
   @override

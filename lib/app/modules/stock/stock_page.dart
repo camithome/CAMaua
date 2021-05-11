@@ -9,9 +9,7 @@ class StockPage extends StatefulWidget {
   StockPageState createState() => StockPageState();
 }
 
-class StockPageState extends State<StockPage> {
-  final StockStore store = Modular.get();
-
+class StockPageState extends ModularState<StockPage, StockStore> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
