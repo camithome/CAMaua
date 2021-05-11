@@ -3,11 +3,12 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 //import 'package:slidy_testes/app/modules/home/home_store.dart';
 
+import 'components/card_widget.dart';
 import 'home_store.dart';
 
 class HomePage extends StatefulWidget {
   final String title;
-  const HomePage({Key key, this.title = "Home"}) : super(key: key);
+  const HomePage({Key? key, this.title = "Home"}) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -38,70 +39,26 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Card(
-                          elevation: 8,
-                          child: Padding(
-                            padding: const EdgeInsets.all(12.0),
-                            child: Column(
-                              children: [
-                                Text('Red Bull'),
-                                SizedBox(height: 15),
-                                Container(
-                                    height: 80,
-                                    width: 80,
-                                    child: Image.asset('assets/RedBull2.jpg')),
-                                Divider(),
-                                SizedBox(height: 12),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    ElevatedButton(
-                                        onPressed: () {}, child: Text('Ama')),
-                                    SizedBox(width: 10),
-                                    ElevatedButton(
-                                        onPressed: () {}, child: Text('Ver')),
-                                  ],
-                                )
-                              ],
-                            ),
-                          ),
+                        CardProduto(
+                          title: 'Red Bull',
+                          pathImage: 'assets/RedBull2.jpg',
+                          options: ['Amr', 'Ver'],
                         ),
-                        Card(
-                          elevation: 8,
-                          child: Padding(
-                            padding: const EdgeInsets.all(15.0),
-                            child: Column(
-                              children: [
-                                Text('Moletom Masc'),
-                                SizedBox(height: 15),
-                                Container(
-                                    height: 80,
-                                    width: 80,
-                                    child: Image.asset('assets/Moletom.jpg')),
-                                SizedBox(height: 12),
-                                Divider(thickness: 2),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    ElevatedButton(
-                                        onPressed: () {}, child: Text('GG')),
-                                    SizedBox(width: 6),
-                                    ElevatedButton(
-                                        onPressed: () {}, child: Text('G')),
-                                    SizedBox(width: 6),
-                                    ElevatedButton(
-                                        onPressed: () {}, child: Text('M')),
-                                    SizedBox(width: 6),
-                                    ElevatedButton(
-                                        onPressed: () {}, child: Text('P')),
-                                  ],
-                                )
-                              ],
-                            ),
-                          ),
-                        )
+                        CardProduto(
+                          title: 'Moletom Masc',
+                          pathImage: 'assets/Moletom.jpg',
+                          options: ['PP', 'P', 'M', 'G', 'GG'],
+                        ),
+                        CardProduto(
+                          title: 'Moletom Fem',
+                          pathImage: 'assets/Moletom.jpg',
+                          options: ['P', 'M', 'G', 'GG'],
+                        ),
+                        CardProduto(
+                          title: 'Moletom 2020 Masc',
+                          pathImage: 'assets/Moletom.jpg',
+                          options: ['P', 'M', 'G'],
+                        ),
                       ],
                     ),
                   ),

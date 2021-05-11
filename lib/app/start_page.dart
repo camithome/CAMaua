@@ -24,7 +24,7 @@ class _StartPageState extends State<StartPage> {
                   onPressed: () {
                     Modular.to.navigate('/home');
                   },
-                  child: Text('Produtos')),
+                  child: Text('Home')),
               SizedBox(width: 10),
               ElevatedButton(
                   onPressed: () {

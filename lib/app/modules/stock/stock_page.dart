@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 class StockPage extends StatefulWidget {
   final String title;
-  const StockPage({Key key, this.title = 'StockPage'}) : super(key: key);
+  const StockPage({Key? key, this.title = 'StockPage'}) : super(key: key);
   @override
   StockPageState createState() => StockPageState();
 }
