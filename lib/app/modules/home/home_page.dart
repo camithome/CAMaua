@@ -17,40 +17,6 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Centro Academico'),
-        backgroundColor: Colors.black,
-        flexibleSpace: Padding(
-          padding: const EdgeInsets.all(14.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ElevatedButton(onPressed: () {}, child: Text('Financeiro')),
-              SizedBox(width: 10),
-              ElevatedButton(
-                  onPressed: () {
-                    Modular.to.navigate('/products');
-                  },
-                  child: Text('Produtos')),
-              SizedBox(width: 10),
-              ElevatedButton(
-                  onPressed: () {
-                    Modular.to.navigate('/Stock');
-                  },
-                  child: Text('Estoque'))
-            ],
-          ),
-        ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.all(13.0),
-            child: TextButton(onPressed: () {}, child: Text('Deslogar')),
-          ),
-        ],
-        //],
-      ),
-      //drawer: Drawer(
-      //    ),
       body: SizedBox(
           width: MediaQuery.of(context).size.width,
           //height: MediaQuery.of(context).size.height,
@@ -185,7 +151,6 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
             ),
           ) //),
           ),
-
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           store.increment();
