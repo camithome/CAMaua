@@ -1,4 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:treinandoreplica/app/modules/cadastro/cadastro_module.dart';
+import 'package:treinandoreplica/app/modules/finances/finances_module.dart';
 import 'package:treinandoreplica/app/modules/products/products_module.dart';
 import 'package:treinandoreplica/app/modules/stock/stock_module.dart';
 
@@ -15,6 +17,8 @@ class AppModule extends Module {
       ModuleRoute('/home', module: HomeModule()),
       ModuleRoute('/stock', module: StockModule()),
       ModuleRoute('/products', module: ProductsModule()),
+      ModuleRoute('/finance', module: FinancesModule()),
+      ModuleRoute('/cadastro', module: CadastroModule()),
     ])
   ];
 }

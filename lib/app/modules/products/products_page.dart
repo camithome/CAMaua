@@ -17,7 +17,7 @@ class ProductsPageState extends ModularState<ProductsPage, ProductsStore> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Padding(
-      padding: const EdgeInsets.only(top: 20, left: 460),
+      padding: const EdgeInsets.only(top: 20, left: 420),
       child: Card(
         child: DataTable(columns: [
           DataColumn(label: Text('Nome')),
@@ -39,7 +39,14 @@ class ProductsPageState extends ModularState<ProductsPage, ProductsStore> {
             DataCell(Text('Moletinho')),
             DataCell(Text('1')),
             DataCell(Text('RS 60')),
-          ])
+          ]),
+          DataRow(cells: [
+            DataCell(Text('Shorts')),
+            DataCell(Text('G')),
+            DataCell(Text('Moletinho')),
+            DataCell(Text('1')),
+            DataCell(Text('RS 60')),
+          ]),
         ]),
       ),
     ));

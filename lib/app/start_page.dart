@@ -11,14 +11,25 @@ class _StartPageState extends State<StartPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Centro Academico'),
+        title: Row (children: [ 
+          Text('Centro Academico Mauá'),
+          //Image(image: AssetImage('assets/LogoBranco.png')),
+          SizedBox(width: 15),
+          Image.asset('assets/1.png', fit: BoxFit.contain, height: 32),
+        ],
+        ),
+        //Image.asset('assets/Logo_branco.png'),
         backgroundColor: Colors.black,
         flexibleSpace: Padding(
           padding: const EdgeInsets.all(14.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              ElevatedButton(onPressed: () {}, child: Text('Financeiro')),
+              ElevatedButton(
+                  onPressed: () {
+                    Modular.to.navigate('/finance');
+                  },
+                  child: Text('Financeiro')),
               SizedBox(width: 10),
               ElevatedButton(
                   onPressed: () {
@@ -34,12 +45,6 @@ class _StartPageState extends State<StartPage> {
             ],
           ),
         ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.all(13.0),
-            child: TextButton(onPressed: () {}, child: Text('Deslogar')),
-          ),
-        ],
       ),
       body: RouterOutlet(),
     );

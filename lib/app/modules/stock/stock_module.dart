@@ -1,3 +1,4 @@
+import 'package:mobx/mobx.dart';
 import 'package:treinandoreplica/app/modules/stock/stock_Page.dart';
 import 'package:treinandoreplica/app/modules/stock/stock_store.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -12,4 +13,7 @@ class StockModule extends Module {
   final List<ModularRoute> routes = [
     ChildRoute('/', child: (_, args) => StockPage()),
   ];
+
+ 
+
 }
