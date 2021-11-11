@@ -9,39 +9,79 @@ part of 'finances_store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$FinancesStore on _FinancesStoreBase, Store {
-  final _$valueAtom = Atom(name: '_FinancesStoreBase.value');
+  final _$listFinancesAtom = Atom(name: '_FinancesStoreBase.listFinances');
 
   @override
-  int get value {
-    _$valueAtom.reportRead();
-    return super.value;
+  List<FinancesModel> get listFinances {
+    _$listFinancesAtom.reportRead();
+    return super.listFinances;
   }
 
   @override
-  set value(int value) {
-    _$valueAtom.reportWrite(value, super.value, () {
-      super.value = value;
+  set listFinances(List<FinancesModel> value) {
+    _$listFinancesAtom.reportWrite(value, super.listFinances, () {
+      super.listFinances = value;
     });
   }
 
-  final _$_FinancesStoreBaseActionController =
-      ActionController(name: '_FinancesStoreBase');
+  final _$startDateAtom = Atom(name: '_FinancesStoreBase.startDate');
 
   @override
-  void increment() {
-    final _$actionInfo = _$_FinancesStoreBaseActionController.startAction(
-        name: '_FinancesStoreBase.increment');
-    try {
-      return super.increment();
-    } finally {
-      _$_FinancesStoreBaseActionController.endAction(_$actionInfo);
-    }
+  DateTime? get startDate {
+    _$startDateAtom.reportRead();
+    return super.startDate;
+  }
+
+  @override
+  set startDate(DateTime? value) {
+    _$startDateAtom.reportWrite(value, super.startDate, () {
+      super.startDate = value;
+    });
+  }
+
+  final _$endDateAtom = Atom(name: '_FinancesStoreBase.endDate');
+
+  @override
+  DateTime? get endDate {
+    _$endDateAtom.reportRead();
+    return super.endDate;
+  }
+
+  @override
+  set endDate(DateTime? value) {
+    _$endDateAtom.reportWrite(value, super.endDate, () {
+      super.endDate = value;
+    });
+  }
+
+  final _$getStockAsyncAction = AsyncAction('_FinancesStoreBase.getStock');
+
+  @override
+  Future<void> getStock() {
+    return _$getStockAsyncAction.run(() => super.getStock());
+  }
+
+  final _$setStartDateAsyncAction =
+      AsyncAction('_FinancesStoreBase.setStartDate');
+
+  @override
+  Future<void> setStartDate(dynamic startDate) {
+    return _$setStartDateAsyncAction.run(() => super.setStartDate(startDate));
+  }
+
+  final _$setEndDateAsyncAction = AsyncAction('_FinancesStoreBase.setEndDate');
+
+  @override
+  Future<void> setEndDate(dynamic endDate) {
+    return _$setEndDateAsyncAction.run(() => super.setEndDate(endDate));
   }
 
   @override
   String toString() {
     return '''
-value: ${value}
+listFinances: ${listFinances},
+startDate: ${startDate},
+endDate: ${endDate}
     ''';
   }
 }

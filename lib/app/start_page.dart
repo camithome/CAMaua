@@ -11,12 +11,13 @@ class _StartPageState extends State<StartPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Row (children: [ 
-          Text('Centro Academico Mauá'),
-          //Image(image: AssetImage('assets/LogoBranco.png')),
-          SizedBox(width: 15),
-          Image.asset('assets/1.png', fit: BoxFit.contain, height: 32),
-        ],
+        title: Row(
+          children: [
+            Text('Centro Academico Mauá'),
+            //Image(image: AssetImage('assets/LogoBranco.png')),
+            SizedBox(width: 15),
+            Image.asset('assets/1.png', fit: BoxFit.contain, height: 32),
+          ],
         ),
         //Image.asset('assets/Logo_branco.png'),
         backgroundColor: Colors.black,
@@ -27,15 +28,15 @@ class _StartPageState extends State<StartPage> {
             children: [
               ElevatedButton(
                   onPressed: () {
-                    Modular.to.navigate('/finance');
+                    Modular.to.navigate('/home');
                   },
-                  child: Text('Financeiro')),
+                  child: Text('Loja')),
               SizedBox(width: 10),
               ElevatedButton(
                   onPressed: () {
-                    Modular.to.navigate('/home');
+                    Modular.to.navigate('/finance');
                   },
-                  child: Text('Home')),
+                  child: Text('Financeiro')),
               SizedBox(width: 10),
               ElevatedButton(
                   onPressed: () {

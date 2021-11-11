@@ -24,36 +24,29 @@ class CardProduto extends StatelessWidget {
           children: [
             Text(title),
             SizedBox(height: 15),
-            Container(height: 80, width: 80, child: Image.asset(pathImage)),
+            Expanded(
+                flex: 1,
+                child: Container(
+                    height: 80, width: 80, child: Image.asset(pathImage))),
             Divider(),
             SizedBox(height: 12),
-            Container(
-              constraints: BoxConstraints(maxHeight: 58, maxWidth: 250),
-              child: CupertinoScrollbar(
-                isAlwaysShown: true,
-                controller: scroll,
-                child: Padding(
-                  padding: const EdgeInsets.only(bottom: 8.0),
-                  child: ListView.separated(
-                    controller: scroll,
-                    scrollDirection: Axis.horizontal,
-                    shrinkWrap: true,
-                    itemBuilder: (context, index) {
-                      return Container(
-                        width: 50,
-                        height: 50,
-                        child: ElevatedButton(
-                            onPressed: () {}, child: Text(options[index])),
-                      );
-                    },
-                    separatorBuilder: (context, index) {
-                      return SizedBox(
-                        width: 8,
-                      );
-                    },
-                    itemCount: options.length,
-                  ),
-                ),
+            Expanded(
+              flex: 1,
+              child: GridView.builder(
+                physics: NeverScrollableScrollPhysics(),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    childAspectRatio: 1.5,
+                    crossAxisCount: 4,
+                    mainAxisSpacing: 4,
+                    crossAxisSpacing: 4),
+                //scrollDirection: Axis.horizontal,
+                //mainAxisAlignment: MainAxisAlignment.center,
+                primary: false,
+                itemCount: 6,
+                itemBuilder: (context, index) {
+                  return ElevatedButton(
+                      onPressed: () {}, child: Text(options[index]));
+                },
               ),
             )
           ],

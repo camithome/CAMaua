@@ -22,56 +22,37 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
     return Scaffold(
       body: SizedBox(
           width: MediaQuery.of(context).size.width,
-          //height: MediaQuery.of(context).size.height,
-          //child: Container(
-          //width: 600,
-          height: 800,
-          //decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 20),
+            padding: const EdgeInsets.only(top: 20),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Flexible(
                   flex: 5,
-                  child: Card(
-                    elevation: 8,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15)),
-                    child: Padding(
-                      padding: const EdgeInsets.all(60.0),
-                      child: GridView.count(
+                  child: Padding(
+                    padding: const EdgeInsets.all(60.0),
+                    child: Observer(builder: (context) {
+                      return GridView.builder(
+                        shrinkWrap: true,
+
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 3,
+                            mainAxisSpacing: 8,
+                            crossAxisSpacing: 8),
                         //scrollDirection: Axis.horizontal,
                         //mainAxisAlignment: MainAxisAlignment.center,
                         primary: false,
                         padding: const EdgeInsets.all(20),
-                        crossAxisSpacing: 10,
-                        mainAxisSpacing: 10,
-                        crossAxisCount: 3,
-                        children: [
-                          CardProduto(
-                            title: 'Red Bull',
-                            pathImage: 'assets/RedBull2.jpg',
-                            options: ['Amr', 'Ver'],
-                          ),
-                          CardProduto(
-                            title: 'Moletom Masc',
+                        itemCount: controller.listHome.length,
+                        itemBuilder: (context, index) {
+                          return CardProduto(
+                            title: controller.listHome[index].name,
                             pathImage: 'assets/Moletom.jpg',
-                            options: ['PP', 'P', 'M', 'G', 'GG'],
-                          ),
-                          CardProduto(
-                            title: 'Moletom Fem',
-                            pathImage: 'assets/Moletom.jpg',
-                            options: ['P', 'M', 'G', 'GG'],
-                          ),
-                          CardProduto(
-                            title: 'Moletom 2020 Masc',
-                            pathImage: 'assets/Moletom.jpg',
-                            options: ['P', 'M', 'G'],
-                          ),
-                        ],
-                      ),
-                    ),
+                            options: controller.listHome[index].options,
+                          );
+                        },
+                      );
+                    }),
                   ),
                 ),
                 Flexible(flex: 1, child: SizedBox(width: 10)),
