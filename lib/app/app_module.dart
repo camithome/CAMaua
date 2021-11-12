@@ -11,7 +11,8 @@ import 'start_page.dart';
 class AppModule extends Module {
   @override
   final List<Bind> binds = [
-    Bind.lazySingleton((i) => Dio(BaseOptions(baseUrl: 'localhost:3000/api')))
+    Bind.lazySingleton(
+        (i) => Dio(BaseOptions(baseUrl: 'http://localhost:3000/api')))
   ];
 
   @override

@@ -90,13 +90,7 @@ class CadastroPageState extends State<CadastroPage> {
 
                           Produto produtoNovo = Produto(
                               nome, quantidade, valor, tamanho_descricao);
-                          //print(produtoNovo);
                           List<dynamic> produtos = [];
-                          //produtos.add(produtoNovo);
-                          //names.add(produtoNovo);
-
-                          //listItems = List.from(listItems..add(model));
-                          //print(produtos);
                         },
                         child: Container(
                             width: double.infinity,

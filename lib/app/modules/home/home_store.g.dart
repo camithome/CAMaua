@@ -12,13 +12,13 @@ mixin _$HomeStore on HomeStoreBase, Store {
   final _$listHomeAtom = Atom(name: 'HomeStoreBase.listHome');
 
   @override
-  List<HomeModel> get listHome {
+  ObservableList<HomeModel> get listHome {
     _$listHomeAtom.reportRead();
     return super.listHome;
   }
 
   @override
-  set listHome(List<HomeModel> value) {
+  set listHome(ObservableList<HomeModel> value) {
     _$listHomeAtom.reportWrite(value, super.listHome, () {
       super.listHome = value;
     });
@@ -36,6 +36,21 @@ mixin _$HomeStore on HomeStoreBase, Store {
   set myCar(List<MyCarModel> value) {
     _$myCarAtom.reportWrite(value, super.myCar, () {
       super.myCar = value;
+    });
+  }
+
+  final _$precoTotalAtom = Atom(name: 'HomeStoreBase.precoTotal');
+
+  @override
+  double get precoTotal {
+    _$precoTotalAtom.reportRead();
+    return super.precoTotal;
+  }
+
+  @override
+  set precoTotal(double value) {
+    _$precoTotalAtom.reportWrite(value, super.precoTotal, () {
+      super.precoTotal = value;
     });
   }
 
@@ -61,10 +76,22 @@ mixin _$HomeStore on HomeStoreBase, Store {
   }
 
   @override
+  void cleanMyCar() {
+    final _$actionInfo = _$HomeStoreBaseActionController.startAction(
+        name: 'HomeStoreBase.cleanMyCar');
+    try {
+      return super.cleanMyCar();
+    } finally {
+      _$HomeStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 listHome: ${listHome},
-myCar: ${myCar}
+myCar: ${myCar},
+precoTotal: ${precoTotal}
     ''';
   }
 }

@@ -19,7 +19,7 @@ class HomeModel {
       name: json['name'] as String,
       urlPic: json['urlPic'] as String,
       price: json['price'] as double,
-      options: json['options'] as List<String>,
+      options: (json['options'] as List).map((e) => e as String).toList(),
     );
   }
 }

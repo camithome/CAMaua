@@ -1,17 +1,21 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:treinandoreplica/app/modules/home/models/home_model.dart';
 
 class CardProduto extends StatelessWidget {
   final String title;
   final String pathImage;
   final List<String> options;
   final ScrollController scroll = ScrollController();
-  CardProduto(
-      {Key? key,
-      required this.title,
-      required this.pathImage,
-      required this.options})
-      : super(key: key);
+  final void Function() onAddToCar;
+
+  CardProduto({
+    Key? key,
+    required this.title,
+    required this.pathImage,
+    required this.options,
+    required this.onAddToCar,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -42,10 +46,10 @@ class CardProduto extends StatelessWidget {
                 //scrollDirection: Axis.horizontal,
                 //mainAxisAlignment: MainAxisAlignment.center,
                 primary: false,
-                itemCount: 6,
+                itemCount: options.length,
                 itemBuilder: (context, index) {
                   return ElevatedButton(
-                      onPressed: () {}, child: Text(options[index]));
+                      onPressed: onAddToCar, child: Text(options[index]));
                 },
               ),
             )

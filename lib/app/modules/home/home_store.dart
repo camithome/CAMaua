@@ -11,7 +11,7 @@ abstract class HomeStoreBase with Store {
   final HomeRepository repository;
 
   @observable
-  List<HomeModel> listHome = [];
+  ObservableList<HomeModel> listHome = ObservableList.of([]);
 
   HomeStoreBase(this.repository) {
     getStore();
@@ -20,9 +20,12 @@ abstract class HomeStoreBase with Store {
   @observable
   List<MyCarModel> myCar = [];
 
+  @observable
+  double precoTotal = 12;
+
   @action
   Future<void> getStore() async {
-    listHome = await repository.getStore();
+    listHome = (await repository.getStore()).asObservable();
   }
 
   @action
@@ -37,5 +40,12 @@ abstract class HomeStoreBase with Store {
     } else {
       myCar.add(MyCarModel(amount: 1, product: product));
     }
+    precoTotal = precoTotal + product.price;
+  }
+
+  @action
+  void cleanMyCar() {
+    myCar = [];
+    precoTotal = 0;
   }
 }

@@ -46,6 +46,9 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
                         itemCount: controller.listHome.length,
                         itemBuilder: (context, index) {
                           return CardProduto(
+                            onAddToCar: () {
+                              controller.addToMyCar(controller.listHome[index]);
+                            },
                             title: controller.listHome[index].name,
                             pathImage: 'assets/Moletom.jpg',
                             options: controller.listHome[index].options,
@@ -76,13 +79,19 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
                                 Text('Seu carrinho:'),
                                 SizedBox(width: 8),
                                 TextButton(
-                                    onPressed: () {}, child: Text('Limpar')),
+                                    onPressed: controller.cleanMyCar,
+                                    child: Text('Limpar')),
                               ],
                             ),
                             Divider(
                               height: 20,
                             ),
-                            Text('Preço Total: RS'),
+                            Observer(builder: (context) {
+                              return Text(
+                                'Preço Total: R\$ ${controller.precoTotal}',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              );
+                            }),
                             Text('Insira um colaborador'),
                             DropdownButton<String>(
                               value: null,
@@ -120,7 +129,7 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
                                   onPressed: () {},
                                   child: Padding(
                                     padding: const EdgeInsets.all(8.0),
-                                    child: Icon(Icons.add_shopping_cart),
+                                    child: Text('FINALIZAR COMPRA'),
                                   )),
                             )
                           ],
