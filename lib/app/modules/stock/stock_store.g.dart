@@ -12,16 +12,23 @@ mixin _$StockStore on _StockStoreBase, Store {
   final _$listStockAtom = Atom(name: '_StockStoreBase.listStock');
 
   @override
-  List<ProductModel> get listStock {
+  ObservableList<ProductModel> get listStock {
     _$listStockAtom.reportRead();
     return super.listStock;
   }
 
   @override
-  set listStock(List<ProductModel> value) {
+  set listStock(ObservableList<ProductModel> value) {
     _$listStockAtom.reportWrite(value, super.listStock, () {
       super.listStock = value;
     });
+  }
+
+  final _$getStockAsyncAction = AsyncAction('_StockStoreBase.getStock');
+
+  @override
+  Future<void> getStock() {
+    return _$getStockAsyncAction.run(() => super.getStock());
   }
 
   @override

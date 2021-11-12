@@ -1,4 +1,6 @@
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:mobx/mobx.dart';
 import 'package:treinandoreplica/app/modules/stock/stock_store.dart';
 import 'package:flutter/material.dart';
 
@@ -16,65 +18,67 @@ class StockPageState extends ModularState<StockPage, StockStore> {
       body: Container(
         padding: EdgeInsets.only(top: 32),
         alignment: Alignment.topCenter,
-        child: Card(
-            child: DataTable(
-                onSelectAll: (b) {},
-                sortColumnIndex: 0,
-                sortAscending: true,
-                columns: <DataColumn>[
-                  DataColumn(
-                    label: Text("Nome"),
-                    numeric: false,
-                    onSort: (i, b) {
-                      print("$i $b");
-                      setState(() {
-                        controller.listStock
-                            .sort((a, b) => a.name.compareTo(b.name));
-                      });
-                    },
-                    tooltip: "Ordenar pelo nome do produto",
-                  ),
-                  DataColumn(
-                    label: Text("Tamanho/Descrição"),
-                    numeric: false,
-                  ),
-                  DataColumn(
-                    label: Text("Quantidade"),
-                    numeric: false,
-                  ),
-                  DataColumn(
-                    label: Text("Preço"),
-                    numeric: false,
-                  ),
-                ],
-                rows: controller.listStock
-                    .map(
-                      (row) => DataRow(
-                        cells: [
-                          DataCell(
-                            Text(row.name),
-                            showEditIcon: false,
-                            placeholder: false,
-                          ),
-                          DataCell(
-                            Text(row.description),
-                            showEditIcon: false,
-                            placeholder: false,
-                          ),
-                          DataCell(
-                            Text('${row.amount}'),
-                            showEditIcon: true,
-                            placeholder: false,
-                          ),
-                          DataCell(
-                            Text('${row.price}'),
-                            showEditIcon: false,
-                            placeholder: false,
-                          )
-                        ],
-                      ),
-                    )
-                    .toList())),
+        child: Observer(builder: (context) {
+          return Card(
+              child: DataTable(
+                  onSelectAll: (b) {},
+                  sortColumnIndex: 0,
+                  sortAscending: true,
+                  columns: <DataColumn>[
+                    DataColumn(
+                      label: Text("Nome"),
+                      numeric: false,
+                      onSort: (i, b) {
+                        print("$i $b");
+                        setState(() {
+                          controller.listStock
+                              .sort((a, b) => a.name.compareTo(b.name));
+                        });
+                      },
+                      tooltip: "Ordenar pelo nome do produto",
+                    ),
+                    DataColumn(
+                      label: Text("Tamanho/Descrição"),
+                      numeric: false,
+                    ),
+                    DataColumn(
+                      label: Text("Quantidade"),
+                      numeric: true,
+                    ),
+                    DataColumn(
+                      label: Text("Preço"),
+                      numeric: true,
+                    ),
+                  ],
+                  rows: controller.listStock
+                      .map(
+                        (row) => DataRow(
+                          cells: [
+                            DataCell(
+                              Text('${row.name}'),
+                              showEditIcon: false,
+                              placeholder: false,
+                            ),
+                            DataCell(
+                              Text('${row.description}'),
+                              showEditIcon: false,
+                              placeholder: false,
+                            ),
+                            DataCell(
+                              Text('${row.amount}'),
+                              showEditIcon: true,
+                              placeholder: false,
+                            ),
+                            DataCell(
+                              Text('${row.price}'),
+                              showEditIcon: false,
+                              placeholder: false,
+                            )
+                          ],
+                        ),
+                      )
+                      .toList()));
+        }),
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),

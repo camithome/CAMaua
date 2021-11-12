@@ -21,7 +21,7 @@ abstract class HomeStoreBase with Store {
   List<MyCarModel> myCar = [];
 
   @observable
-  double precoTotal = 12;
+  double precoTotal = 0;
 
   @action
   Future<void> getStore() async {

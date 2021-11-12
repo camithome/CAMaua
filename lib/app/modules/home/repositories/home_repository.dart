@@ -9,6 +9,7 @@ class HomeRepository {
   Future<List<HomeModel>> getStore() async {
     var res = await client.get('/store');
     var list = res.data as List;
+    print(list);
     return list
         .map((e) => HomeModel.fromJson(e as Map<String, dynamic>))
         .toList();

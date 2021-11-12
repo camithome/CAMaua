@@ -9,14 +9,19 @@ class StockStore = _StockStoreBase with _$StockStore;
 abstract class _StockStoreBase with Store {
   final StockRepository repository;
 
+  // @observable
+  // List<ProductModel> listStock = [];
+
   @observable
-  List<ProductModel> listStock = [];
+  ObservableList<ProductModel> listStock = ObservableList.of([]);
 
   _StockStoreBase(this.repository) {
     getStock();
   }
 
+  @action
   Future<void> getStock() async {
-    listStock = await repository.getProducts();
+    //listStock = await repository.getProducts();
+    listStock = (await repository.getProducts()).asObservable();
   }
 }
